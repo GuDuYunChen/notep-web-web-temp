@@ -1,0 +1,283 @@
+/**
+ * 全局样式文件
+ * 包含基础样式、变量定义和通用组件样式
+ */
+
+// 颜色变量
+@primary-color: #1890ff;
+@success-color: #52c41a;
+@warning-color: #faad14;
+@error-color: #f5222d;
+@text-color: #333333;
+@text-color-secondary: #666666;
+@text-color-light: #999999;
+@border-color: #d9d9d9;
+@background-color: #f5f5f5;
+@white: #ffffff;
+
+// 尺寸变量
+@border-radius-base: 4px;
+@border-radius-sm: 2px;
+@border-radius-lg: 6px;
+@font-size-base: 14px;
+@font-size-lg: 16px;
+@font-size-sm: 12px;
+@line-height-base: 1.5;
+@spacing-xs: 4px;
+@spacing-sm: 8px;
+@spacing-md: 16px;
+@spacing-lg: 24px;
+@spacing-xl: 32px;
+
+// 阴影变量
+@box-shadow-base: 0 2px 8px rgba(0, 0, 0, 0.15);
+@box-shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.1);
+@box-shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.2);
+
+// 全局重置样式
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  color: @text-color;
+  background-color: @background-color;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  height: 100%;
+}
+
+// 链接样式
+a {
+  color: @primary-color;
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:hover {
+    color: lighten(@primary-color, 10%);
+  }
+
+  &:active {
+    color: darken(@primary-color, 10%);
+  }
+}
+
+// 按钮基础样式
+.btn {
+  display: inline-block;
+  padding: @spacing-sm @spacing-md;
+  border: 1px solid @border-color;
+  border-radius: @border-radius-base;
+  background-color: @white;
+  color: @text-color;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s;
+  user-select: none;
+
+  &:hover {
+    border-color: @primary-color;
+    color: @primary-color;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  // 主要按钮
+  &.btn-primary {
+    background-color: @primary-color;
+    border-color: @primary-color;
+    color: @white;
+
+    &:hover {
+      background-color: lighten(@primary-color, 10%);
+      border-color: lighten(@primary-color, 10%);
+    }
+  }
+
+  // 成功按钮
+  &.btn-success {
+    background-color: @success-color;
+    border-color: @success-color;
+    color: @white;
+
+    &:hover {
+      background-color: lighten(@success-color, 10%);
+      border-color: lighten(@success-color, 10%);
+    }
+  }
+
+  // 警告按钮
+  &.btn-warning {
+    background-color: @warning-color;
+    border-color: @warning-color;
+    color: @white;
+
+    &:hover {
+      background-color: lighten(@warning-color, 10%);
+      border-color: lighten(@warning-color, 10%);
+    }
+  }
+
+  // 危险按钮
+  &.btn-danger {
+    background-color: @error-color;
+    border-color: @error-color;
+    color: @white;
+
+    &:hover {
+      background-color: lighten(@error-color, 10%);
+      border-color: lighten(@error-color, 10%);
+    }
+  }
+}
+
+// 输入框基础样式
+.input {
+  display: block;
+  width: 100%;
+  padding: @spacing-sm @spacing-md;
+  border: 1px solid @border-color;
+  border-radius: @border-radius-base;
+  background-color: @white;
+  color: @text-color;
+  font-size: @font-size-base;
+  line-height: @line-height-base;
+  transition: border-color 0.3s, box-shadow 0.3s;
+
+  &:focus {
+    outline: none;
+    border-color: @primary-color;
+    box-shadow: 0 0 0 2px fade(@primary-color, 20%);
+  }
+
+  &:disabled {
+    background-color: @background-color;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: @text-color-light;
+  }
+}
+
+// 卡片样式
+.card {
+  background-color: @white;
+  border-radius: @border-radius-base;
+  box-shadow: @box-shadow-sm;
+  overflow: hidden;
+
+  .card-header {
+    padding: @spacing-md;
+    border-bottom: 1px solid @border-color;
+    font-weight: 500;
+  }
+
+  .card-body {
+    padding: @spacing-md;
+  }
+
+  .card-footer {
+    padding: @spacing-md;
+    border-top: 1px solid @border-color;
+    background-color: @background-color;
+  }
+}
+
+// 工具类
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-primary {
+  color: @primary-color;
+}
+
+.text-success {
+  color: @success-color;
+}
+
+.text-warning {
+  color: @warning-color;
+}
+
+.text-danger {
+  color: @error-color;
+}
+
+.text-muted {
+  color: @text-color-light;
+}
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: @spacing-xs; }
+.mb-2 { margin-bottom: @spacing-sm; }
+.mb-3 { margin-bottom: @spacing-md; }
+.mb-4 { margin-bottom: @spacing-lg; }
+.mb-5 { margin-bottom: @spacing-xl; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: @spacing-xs; }
+.mt-2 { margin-top: @spacing-sm; }
+.mt-3 { margin-top: @spacing-md; }
+.mt-4 { margin-top: @spacing-lg; }
+.mt-5 { margin-top: @spacing-xl; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: @spacing-xs; }
+.p-2 { padding: @spacing-sm; }
+.p-3 { padding: @spacing-md; }
+.p-4 { padding: @spacing-lg; }
+.p-5 { padding: @spacing-xl; }
+
+.d-none { display: none; }
+.d-block { display: block; }
+.d-inline { display: inline; }
+.d-inline-block { display: inline-block; }
+.d-flex { display: flex; }
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
